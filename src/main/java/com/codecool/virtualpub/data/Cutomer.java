@@ -26,7 +26,7 @@ public class Cutomer {
     private void generateSweatSpots() {
         Random random = new Random();
 
-        int sweetPrecental = random.nextInt(90 + 1 - 70) + 70;
+        int sweetPercental = random.nextInt(90 + 1 - 70) + 70;
         this.sweatSpotMax = this.alcoholTolerance / 100 * sweetPrecental;
         int range = random.nextInt(10 + 1 - 5) + 5;
         this.sweatSpotMin = this.sweatSpotMax - range;
@@ -59,6 +59,16 @@ public class Cutomer {
         }
 
         this.alcoholLevel += alcoholUnit;
+    }
+
+    public String Speak() {
+        Random random = new Random();
+        int idx = random.nextInt(0, this.sentences.length);
+        String sentence = this.sentences[idx];
+
+        // todo change rand chars according to the this.alcoholLevel
+
+        return sentence;
     }
 
     private void drinkRefused() {
