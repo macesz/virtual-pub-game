@@ -6,10 +6,11 @@ public class Drink {
     private final int price;
     private int amount;
 
-    public Drink(String brand, DrinkType drinkType, int price) {
+    public Drink(String brand, DrinkType drinkType, int amount, int price) {
         this.brand = brand;
         this.drinkType = drinkType;
         this.price = price;
+        this.amount = amount;
     }
 
     public String getBrand() {
@@ -20,15 +21,13 @@ public class Drink {
         return drinkType;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
     public int getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    // return with price of amount
+    public int pour(int amount) {
+        this.amount -= amount;
+        return amount * price;
     }
 }

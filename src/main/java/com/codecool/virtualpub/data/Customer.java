@@ -51,13 +51,13 @@ public class Customer {
         return name;
     }
 
-    public void drink(int alcoholUnit) {
-        if (alcoholUnit == 0) {
+    public void drink(DrinkType drinkType, int amount) {
+        if (amount == 0) {
             drinkRefused();
             return;
         }
 
-        this.alcoholLevel += alcoholUnit;
+        this.alcoholLevel += drinkType.getAlcoholLevel() * amount;
     }
 
     public String speak() {
