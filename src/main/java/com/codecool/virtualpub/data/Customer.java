@@ -10,11 +10,13 @@ public class Customer {
     private int alcoholLevel;
     private int refuseCount;
     private String[] sentences;
+    private final Random random;
+
 
     public Customer(String name) {
         this.name = name;
 
-        Random random = new Random();
+        this.random = new Random();
         this.alcoholTolerance = random.nextInt(100 + 1 - 50) + 50;
 
         this.generateSweatSpots();
@@ -23,8 +25,6 @@ public class Customer {
     }
 
     private void generateSweatSpots() {
-        Random random = new Random();
-
         int sweetPercental = random.nextInt(90 + 1 - 70) + 70;
         this.sweatSpotMax = this.alcoholTolerance / 100 * sweetPercental;
         int range = random.nextInt(10 + 1 - 5) + 5;
@@ -51,7 +51,7 @@ public class Customer {
         return name;
     }
 
-    public void Drink(int alcoholUnit) {
+    public void drink(int alcoholUnit) {
         if (alcoholUnit == 0) {
             drinkRefused();
             return;
@@ -60,7 +60,7 @@ public class Customer {
         this.alcoholLevel += alcoholUnit;
     }
 
-    public String Speak() {
+    public String speak() {
         Random random = new Random();
         int idx = random.nextInt(0, this.sentences.length);
         String sentence = this.sentences[idx];
@@ -79,11 +79,11 @@ public class Customer {
     }
 
 
-    public boolean IsHappy() {
+    public boolean isHappy() {
         return this.alcoholLevel <= this.sweatSpotMax && this.alcoholLevel >= this.sweatSpotMin;
     }
 
-    public boolean IsAngry() {
+    public boolean isAngry() {
         return this.alcoholLevel > this.sweatSpotMax || this.refuseCount > 3;
     }
 

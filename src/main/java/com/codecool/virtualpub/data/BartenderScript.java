@@ -12,10 +12,10 @@ public enum BartenderScript {
     )),
 
     // Asking what the customer wants to drink
-    ASK_FOR_DRINK(Arrays.asList(
-            "What can I get started for you?",
-            "What’ll it be tonight?",
-            "Looking for something special or just your usual?"
+    REFUSE_SERVICE(Arrays.asList(
+            "I’m sorry, but I can’t serve you another drink. It looks like you’ve had enough for tonight.",
+            "For your own safety, I think it’s best to stop serving you. How about a glass of water instead?",
+            "I’d love to help, but I’m afraid I can’t serve you more alcohol right now."
     )),
 
     // Thanking the customer
