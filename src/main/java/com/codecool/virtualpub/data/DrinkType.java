@@ -1,8 +1,8 @@
 package com.codecool.virtualpub.data;
 
-public enum DrinkTypes {
+public enum DrinkType {
     WINE("wine", 12, 12),
-    BEER("beer", 1, 5),
+    BEER("beer", 30, 5),
     WHISKEY("whiskey", 15, 40),
     VODKA("vodka", 15, 40),
     RUM("rum", 15, 37),
@@ -14,10 +14,21 @@ public enum DrinkTypes {
     private final int amountOfPours;
     private final int alcoholLevel;
 
-    DrinkTypes(String type, int amountOfPours, int alcoholLevel) {
+    DrinkType(String type, int amountOfPours, int alcoholLevel) {
         this.type = type;
         this.amountOfPours = amountOfPours;
         this.alcoholLevel = alcoholLevel;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public int getAmountOfPours() {
+        return amountOfPours;
+    }
+
+    public int getAlcoholLevel() {
+        return alcoholLevel;
+    }
 }
