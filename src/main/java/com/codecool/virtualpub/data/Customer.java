@@ -2,7 +2,7 @@ package com.codecool.virtualpub.data;
 
 import java.util.Random;
 
-public class Cutomer {
+public class Customer {
     private final String name;
     private int sweatSpotMin;
     private int sweatSpotMax;
@@ -11,14 +11,13 @@ public class Cutomer {
     private int refuseCount;
     private String[] sentences;
 
-    public Cutomer(String name) {
+    public Customer(String name) {
         this.name = name;
 
         Random random = new Random();
         this.alcoholTolerance = random.nextInt(100 + 1 - 50) + 50;
 
         this.generateSweatSpots();
-
         this.alcoholLevel = 0;
         this.refuseCount = 0;
     }
@@ -27,7 +26,7 @@ public class Cutomer {
         Random random = new Random();
 
         int sweetPercental = random.nextInt(90 + 1 - 70) + 70;
-        this.sweatSpotMax = this.alcoholTolerance / 100 * sweetPrecental;
+        this.sweatSpotMax = this.alcoholTolerance / 100 * sweetPercental;
         int range = random.nextInt(10 + 1 - 5) + 5;
         this.sweatSpotMin = this.sweatSpotMax - range;
         this.sentences = this.generateSentences();
