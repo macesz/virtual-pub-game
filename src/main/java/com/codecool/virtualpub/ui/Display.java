@@ -45,10 +45,12 @@ public class Display {
     }
 
     /**
-     * Displays the stock of drinks to the console. The drinks are grouped by {@link DrinkType}
-     * and sorted alphabetically. Each drink type is followed by the brands and the respective amount.
+     * Displays the stock of drinks to the console. The drinks are grouped by {@link DrinkType},
+     * and sorted alphabetically by drink type. For each type, the available brands and their respective
+     * amounts and prices are displayed.
      *
      * @param drinks A list of {@link Drink} objects representing the stock of drinks.
+     *               The list is copied and sorted without modifying the original.
      */
     public void displayStock(List<Drink> drinks) {
         // create copy and sort
@@ -63,7 +65,7 @@ public class Display {
                 System.out.println("  " + drink.getDrinkType() + ":");
                 usedDrinkTypes.add(drink.getDrinkType());
             }
-            System.out.println("    " + drink.getAmount() + " unit of " + drink.getBrand());
+            System.out.println("    " + drink.getAmount() + " unit of " + drink.getBrand() + "- price: " + drink.getPrice() + "/unit");
         }
     }
 
