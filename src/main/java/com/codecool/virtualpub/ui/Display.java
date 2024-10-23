@@ -93,6 +93,18 @@ public class Display {
     }
 
     /**
+     * Displays the available drinks
+     *
+     * @param drinkNames An array of strings representing the available drinks
+     */
+    public void displayDrinkName(String[] drinkNames) {
+        System.out.println("\n" + "Drinks: ");
+        for (int i = 1; i < drinkNames.length; i++) {
+            System.out.println(i + ": " + drinkNames[i - 1]);
+        }
+    }
+
+    /**
      * Displays the number of customers remaining in the pub and their names if provided.
      *
      * @param numberOfCustomers The number of customers in the pub.
@@ -100,11 +112,12 @@ public class Display {
      */
     public void displayRemainingCustomers(int numberOfCustomers, String[] customerNames) {
         System.out.println("\nThere are " + numberOfCustomers + " customers in the pub\n");
-        if (customerNames != null) {
-            System.out.println("Customers in line: ");
-            for (int i = 1; i <= customerNames.length; i++) {
-                System.out.println(i + ": " + customerNames[i - 1]);
-            }
+        if (customerNames == null) {
+            return;
+        }
+        System.out.println("Customers in line: ");
+        for (int i = 1; i <= customerNames.length; i++) {
+            System.out.println(i + ": " + customerNames[i - 1]);
         }
     }
 

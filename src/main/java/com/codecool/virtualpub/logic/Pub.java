@@ -55,17 +55,37 @@ public class Pub {
 
             this.bartender.welcome();
 
-          //  display(customer.speak());
+            // no angry no happy
+            customer.speak();
 
+            // 1. pour 2. refuse 3. check stock 4. check customers
             // bekerjuk a bartenderen keresytul a console bol hogy mit es mennyit akarunk tolteni
-            Drink drink = this.bartender.getDrink(stock);
-            int drinkAmount = this.bartender.getDrinkAmount();
-
-            pour(drink, drinkAmount);
-
-            customer.drink(drink, drinkAmount);
+            while(true) {
+                // todo switch case
+                int action = 1;
+                if (1 == 1) {
+                    Drink drink = this.bartender.getDrink(stock);
+                    int drinkAmount = this.bartender.getDrinkAmount();
+                    bartender.thanks();
+                    pour(drink, drinkAmount);
+                    customer.drink(drink, drinkAmount);
+                    break;
+                } else {
+                    bartender.refuse();
+                    // angry speak
+                    customer.drinkRefused();
+                    break;
+                }
+            }
 
             if (customer.isHappy()) {
+                // happy speak
+                removeCustomer(customer);
+            } else {
+                sendToEndOfLine(customer);
+            }
+
+            if (stock.isEmpty()) {
                 state = GameState.WIN;
             }
 
@@ -76,6 +96,7 @@ public class Pub {
             if (customer.isPassedOut()) {
                 state = GameState.PASSEDOUT;
             }
+
         }
 
         return state;

@@ -39,13 +39,11 @@ public class Customer {
     }
 
     public void drink(Drink drink, int amount) {
-        if (amount == 0) {
-            drinkRefused();
-            return;
-        }
 
         this.alcoholLevel += drink.getDrinkType().getBrainDamage() * amount;
     }
+
+    // todo
 
     public void speak() {
         CustomerScript currentMood = getMood();  // Determine mood
@@ -67,7 +65,8 @@ public class Customer {
         }
     }
 
-    private void drinkRefused() {
+    public void drinkRefused() {
+        // todo angry speak
         this.refuseCount++;
         this.alcoholLevel -= 10;
         if (this.alcoholLevel < 0) {
@@ -76,6 +75,7 @@ public class Customer {
     }
 
 
+    // todo refactor
     public boolean isHappy() {
         return this.alcoholLevel <= this.sweatSpotMax && this.alcoholLevel >= this.sweatSpotMin;
     }
