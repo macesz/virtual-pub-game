@@ -1,9 +1,6 @@
 package com.codecool.virtualpub.ui;
 
-import com.codecool.virtualpub.data.BartenderScript;
-import com.codecool.virtualpub.data.CustomerScript;
-import com.codecool.virtualpub.data.Drink;
-import com.codecool.virtualpub.data.DrinkType;
+import com.codecool.virtualpub.data.*;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -66,7 +63,7 @@ public class Display {
                 System.out.println("  " + drink.getDrinkType() + ":");
                 usedDrinkTypes.add(drink.getDrinkType());
             }
-            System.out.println("    " + drink.getBrand() + ": " + drink.getAmount());
+            System.out.println("    " + drink.getAmount() + " unit of " + drink.getBrand());
         }
     }
 
@@ -81,5 +78,30 @@ public class Display {
         for (int i = 1; i <= actions.length; i++) {
             System.out.println(i + ": " + actions[i - 1]);
         }
+    }
+
+    /**
+     * Displays the number of customers remaining in the pub and their names if provided.
+     *
+     * @param numberOfCustomers The number of customers in the pub.
+     * @param customerNames     An optional array of customer names. If null, names are not displayed.
+     */
+    public void displayRemainingCustomers(int numberOfCustomers, String[] customerNames) {
+        System.out.println("There are " + numberOfCustomers + " in the pub");
+        if (customerNames != null) {
+            System.out.println("Customers in line: ");
+            for (int i = 1; i <= customerNames.length; i++) {
+                System.out.println(i + ": " + customerNames[i - 1]);
+            }
+        }
+    }
+
+    /**
+     * Displays the number of customers remaining in the pub.
+     *
+     * @param numberOfCustomers The number of customers in the pub.
+     */
+    public void displayRemainingCustomers(int numberOfCustomers) {
+        displayRemainingCustomers(numberOfCustomers, null);
     }
 }
