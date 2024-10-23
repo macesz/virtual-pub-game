@@ -43,6 +43,8 @@ public class Customer {
         this.alcoholLevel += drink.getDrinkType().getBrainDamage() * amount;
     }
 
+    // todo
+
     public void speak() {
         CustomerScript currentMood = getMood();  // Determine mood
         int idx = random.nextInt(currentMood.getSentences().size());  // Get random sentence

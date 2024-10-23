@@ -55,7 +55,7 @@ public class Pub {
 
             this.bartender.welcome();
 
-            // no angry
+            // no angry no happy
             customer.speak();
 
             // 1. pour 2. refuse 3. check stock 4. check customers
@@ -74,12 +74,18 @@ public class Pub {
                     bartender.refuse();
                     // angry speak
                     customer.drinkRefused();
-                    sendToEndOfLine(customer);
                     break;
                 }
             }
 
             if (customer.isHappy()) {
+                // happy speak
+                removeCustomer(customer);
+            } else {
+                sendToEndOfLine(customer);
+            }
+
+            if (stock.isEmpty()) {
                 state = GameState.WIN;
             }
 
