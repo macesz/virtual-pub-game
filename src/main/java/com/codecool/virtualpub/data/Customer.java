@@ -1,5 +1,6 @@
 package com.codecool.virtualpub.data;
 
+import java.util.List;
 import java.util.Random;
 
 public class Customer {
@@ -29,22 +30,11 @@ public class Customer {
         this.sweatSpotMax = this.alcoholTolerance / 100 * sweetPercental;
         int range = random.nextInt(10 + 1 - 5) + 5;
         this.sweatSpotMin = this.sweatSpotMax - range;
-        this.sentences = this.generateSentences();
+//        this.sentences = this.generateSentences();
     }
 
     private String[] generateSentences() {
-        return new String[]{
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                "Nunc sed magna risus.",
-                "Vivamus imperdiet metus maximus arcu faucibus, eu rhoncus dui condimentum.",
-                "Interdum et malesuada fames ac ante ipsum primis in faucibus.",
-                "Nam nec odio sed leo euismod sollicitudin sit amet id magna.",
-                "Nullam vehicula ex id lobortis convallis.",
-                "Maecenas dapibus a sapien et gravida.",
-                "Mauris mattis aliquam nisi, et tincidunt elit consequat in.",
-                "Quisque a blandit purus.",
-                "Sed pretium enim lorem, non fringilla sapien fermentum ut.",
-        };
+
     }
 
     public String getName() {
@@ -61,13 +51,22 @@ public class Customer {
     }
 
     public String speak() {
-        Random random = new Random();
-        int idx = random.nextInt(0, this.sentences.length);
-        String sentence = this.sentences[idx];
+        CustomerScript currentMood = getMood();  // Determine mood
+        List<String> sentences = currentMood.getSentences();
+        int idx = random.nextInt(sentences.size());  // Get random sentence
+        return sentences.get(idx);
+    }
 
-        // todo change rand chars according to the this.alcoholLevel
-
-        return sentence;
+    private CustomerScript getMood() {
+        if (this.alcoholLevel > this.alcoholTolerance) {
+            return CustomerScript.DRUNK;
+        } else if (isHappy()) {
+            return CustomerScript.HAPPY;
+        } else if (isAngry()) {
+            return CustomerScript.ANGRY;
+        } else {
+            return CustomerScript.SOBER;
+        }
     }
 
     private void drinkRefused() {
