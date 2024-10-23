@@ -29,6 +29,10 @@ public class Drink {
         return price;
     }
 
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
     // return with price of amount
     public int pour(int amount) {
         this.amount -= amount;

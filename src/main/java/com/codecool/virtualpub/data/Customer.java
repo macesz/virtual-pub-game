@@ -1,5 +1,7 @@
 package com.codecool.virtualpub.data;
 
+import com.codecool.virtualpub.ui.Display;
+
 import java.util.List;
 import java.util.Random;
 
@@ -30,34 +32,30 @@ public class Customer {
         this.sweatSpotMax = this.alcoholTolerance / 100 * sweetPercental;
         int range = random.nextInt(10 + 1 - 5) + 5;
         this.sweatSpotMin = this.sweatSpotMax - range;
-//        this.sentences = this.generateSentences();
-    }
-
-    private String[] generateSentences() {
-
     }
 
     public String getName() {
         return name;
     }
 
-    public void drink(DrinkType drinkType, int amount) {
+    public void drink(Drink drink, int amount) {
         if (amount == 0) {
             drinkRefused();
             return;
         }
 
-        this.alcoholLevel += drinkType.getAlcoholLevel() * amount;
+        this.alcoholLevel += drink.getDrinkType().getBrainDamage() * amount;
     }
 
-    public String speak() {
+    public void speak() {
         CustomerScript currentMood = getMood();  // Determine mood
-        List<String> sentences = currentMood.getSentences();
-        int idx = random.nextInt(sentences.size());  // Get random sentence
-        return sentences.get(idx);
+        int idx = random.nextInt(currentMood.getSentences().size());  // Get random sentence
+        Display display = new Display();
+        display.displayScript(currentMood, idx);
     }
 
     private CustomerScript getMood() {
+        // todo refactor (switch case)
         if (this.alcoholLevel > this.alcoholTolerance) {
             return CustomerScript.DRUNK;
         } else if (isHappy()) {
