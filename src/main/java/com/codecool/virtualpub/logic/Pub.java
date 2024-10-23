@@ -55,18 +55,15 @@ public class Pub {
 
             this.bartender.welcome();
 
-            display(customer.speak());
+          //  display(customer.speak());
 
             // bekerjuk a bartenderen keresytul a console bol hogy mit es mennyit akarunk tolteni
-            DrinkType drinkType = this.bartender.getDrinkType();
+            Drink drink = this.bartender.getDrink(stock);
             int drinkAmount = this.bartender.getDrinkAmount();
 
-            drinkAmount = poor(drinkType, drinkAmount);
-            if (drinkAmount == 0) {
-                // todo bartender should choose other drink
-            }
+            pour(drink, drinkAmount);
 
-            customer.drink(drinkType, drinkAmount);
+            customer.drink(drink, drinkAmount);
 
             if (customer.isHappy()) {
                 state = GameState.WIN;
@@ -84,22 +81,8 @@ public class Pub {
         return state;
     }
 
-    private int poor(DrinkType drinkType, int amount) {
-        for (Drink drink : stock) {
-            if (drink.getDrinkType() == drinkType) {
-                int stockAmount = drink.getAmount();
-                if (stockAmount < amount) {
-                    amount = stockAmount;
-                }
-
-                int price = drink.pour(amount);
-
-                this.profit += price;
-
-                return amount;
-            }
-        }
-
-        return 0;
+    private void pour(Drink drink, int amount) {
+        drink.setAmount(drink.getAmount() - amount);
+        profit += drink.getPrice() * amount;
     }
 }
