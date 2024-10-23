@@ -24,7 +24,7 @@ public class Display {
     public void displayScript(BartenderScript script, int index) {
         try{
             System.out.println("\n" + "Bartender: " + script.getScripts().get(index) + "\n");
-        } catch (Exception e) {
+        } catch (IndexOutOfBoundsException e) {
             System.out.println("Script not found");
         }
     }
