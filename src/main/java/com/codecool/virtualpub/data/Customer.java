@@ -1,8 +1,7 @@
 package com.codecool.virtualpub.data;
 
-import com.codecool.virtualpub.ui.Display;
+import com.codecool.virtualpub.ui.Displayer;
 
-import java.util.List;
 import java.util.Random;
 
 public class Customer {
@@ -14,9 +13,10 @@ public class Customer {
     private int refuseCount;
     private String[] sentences;
     private final Random random;
+    private Displayer display;
 
 
-    public Customer(String name) {
+    public Customer(String name, Displayer display) {
         this.name = name;
 
         this.random = new Random();
@@ -25,6 +25,7 @@ public class Customer {
         this.generateSweatSpots();
         this.alcoholLevel = 0;
         this.refuseCount = 0;
+        this.display = display;
     }
 
     private void generateSweatSpots() {
@@ -48,8 +49,7 @@ public class Customer {
     public void speak() {
         CustomerScript currentMood = getMood();  // Determine mood
         int idx = random.nextInt(currentMood.getSentences().size());  // Get random sentence
-        Display display = new Display();
-        display.displayScript(currentMood, idx);
+        this.display.displayScript(currentMood, idx);
     }
 
     private CustomerScript getMood() {

@@ -1,10 +1,15 @@
 package com.codecool.virtualpub.ui;
 
-import com.codecool.virtualpub.data.*;
+import com.codecool.virtualpub.data.BartenderScript;
+import com.codecool.virtualpub.data.CustomerScript;
+import com.codecool.virtualpub.data.Drink;
+import com.codecool.virtualpub.data.DrinkType;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class Display {
+public class Display implements Displayer {
 
     /**
      * Displays a message to the console.
@@ -22,7 +27,7 @@ public class Display {
      * @param index  The index of the script to be displayed from the list of bartender scripts.
      */
     public void displayScript(BartenderScript script, int index) {
-        try{
+        try {
             System.out.println("\n" + "Bartender: " + script.getScripts().get(index) + "\n");
         } catch (Exception e) {
             System.out.println("Script not found");
@@ -36,7 +41,7 @@ public class Display {
      * @param index  The index of the sentence to be displayed from the list of customer sentences.
      */
     public void displayScript(CustomerScript script, int index) {
-        try{
+        try {
             System.out.println("\n" + "Customer: " + script.getSentences().get(index) + "\n");
         } catch (Exception e) {
             System.out.println("Script not found");
@@ -83,7 +88,7 @@ public class Display {
      * Displays a list of actions performed by the bartender. The actions are numbered.
      *
      * @param bartenderName The name of the bartender.
-     * @param actions An array of strings representing the bartender's actions.
+     * @param actions       An array of strings representing the bartender's actions.
      */
     public void displayBartenderActions(String bartenderName, String[] actions) {
         System.out.println("\n" + bartenderName + "'s actions: ");

@@ -4,6 +4,7 @@ import com.codecool.virtualpub.data.Bartender;
 import com.codecool.virtualpub.data.Customer;
 import com.codecool.virtualpub.data.Drink;
 import com.codecool.virtualpub.data.GameState;
+import com.codecool.virtualpub.ui.Display;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,10 +12,11 @@ import java.util.List;
 public class Game {
     public void Game() {
         ArrayList<Customer> customers = new ArrayList<Customer>();
+        Display display = new Display();
 
         for (int i = 0; i < 10; i++) {
             String name = "random bela";
-            customers.add(new Customer(name));
+            customers.add(new Customer(name, display));
         }
 
         // todo kerd be a jatekostol a nevet
