@@ -6,11 +6,11 @@ public class Drink {
     private final int price;
     private int amount;
 
-    public Drink(String brand, DrinkType drinkType, int amount, int price) {
+    public Drink(String brand, DrinkType drinkType, int price) {
         this.brand = brand;
         this.drinkType = drinkType;
         this.price = price;
-        this.amount = amount;
+        this.amount = drinkType.getAmountOfPours();
     }
 
     public String getBrand() {
