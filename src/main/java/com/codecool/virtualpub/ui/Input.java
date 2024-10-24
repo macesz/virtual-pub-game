@@ -31,13 +31,14 @@ public class Input {
     private int getChoice(Bartender bartender, String[] actions){
         while (true) {
             try {
+                display.displayMessage("\nEnter choice: ");
                 int input = Integer.parseInt(getInput());
-                if (input > actions.length) {
+                if (input > actions.length || input < 1) {
                     throw new Exception();
                 }
                 return input;
             } catch (Exception e) {
-                display.displayMessage("Not a correct choice!");
+                display.displayMessage("\nNot a correct choice!");
             }
         }
     }
@@ -53,6 +54,7 @@ public class Input {
      */
     public int getActionChoice(Bartender bartender, String[] actions){
         display.displayBartenderActions(bartender.getName(), actions );
+        display.displayMessage("\nChoose an action:");
         return getChoice(bartender, actions);
     }
 
@@ -66,7 +68,8 @@ public class Input {
      * @return An integer representing the index of the user's selected drink from the list.
      */
     public int getDrinkChoice(Bartender bartender, String[] drinks){
-        display.displayBartenderDrinks(bartender.getName(), drinks );
+        display.displayDrinkName(drinks);
+        display.displayMessage("\nChoose a drink:");
         return getChoice(bartender, drinks);
     }
 
@@ -76,7 +79,22 @@ public class Input {
      * @return A String representing the user's inputted name.
      */
     public String getName(){
-        display.displayMessage("Enter your name: ");
+        display.displayMessage("\nEnter your name: ");
         return getInput();
+    }
+
+    public int getDrinkAmount(int max) {
+        while(true){
+            try{
+                display.displayMessage("\nEnter drink amount: ");
+                int amount = Integer.parseInt(getInput());
+                if (amount > max || amount < 1) {
+                    throw new Exception("\nInvalid drink amount");
+                }
+                return amount;
+            } catch (Exception e) {
+                display.displayMessage(e.getMessage());
+            }
+        }
     }
 }

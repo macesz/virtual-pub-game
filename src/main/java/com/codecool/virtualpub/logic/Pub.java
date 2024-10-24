@@ -62,13 +62,10 @@ public class Pub {
             // todo shouldn't do angry or happy script
             customer.speak();
 
-            // 1. pour 2. refuse 3. check stock 4. check customers
-            // bekerjuk a bartenderen keresytul a console bol hogy mit es mennyit akarunk tolteni
             while(true) {
-                // todo get action from console
-                int action = input.getInteger(4);
+                Action action = bartender.getAction();
                 doAction(action, customer);
-                if (action == 1 || action == 2) {
+                if (action == Action.POUR || action == Action.REFUSE) {
                     break;
                 }
             }
@@ -78,18 +75,18 @@ public class Pub {
         return state;
     }
 
-    private void doAction(int action, Customer customer) {
+    private void doAction(Action action, Customer customer) {
         switch (action) {
-            case 1:
+            case Action.POUR:
                 serve(customer);
                 break;
-            case 2:
+            case Action.REFUSE:
                 refuse(customer);
                 break;
-            case 3:
+            case Action.CHECK_STORAGE:
                 checkStock();
                 break;
-            case 4:
+            case Action.CHECK_CUSTOMERS:
                 checkCustomers();
                 break;
         }
@@ -135,7 +132,7 @@ public class Pub {
 
     private void serve(Customer customer) {
         Drink drink = this.bartender.getDrink(stock);
-        int drinkAmount = this.bartender.getDrinkAmount();
+        int drinkAmount = this.bartender.getDrinkAmount(drink.getAmount());
         bartender.thanks();
         pour(drink, drinkAmount);
         customer.drink(drink, drinkAmount);
