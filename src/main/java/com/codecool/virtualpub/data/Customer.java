@@ -59,7 +59,7 @@ public class Customer {
         } else if (isHappy()) {
             return CustomerScript.HAPPY;
         } else if (isAngry()) {
-            return CustomerScript.ANGRY;
+            return CustomerScript.ANGRY1;
         } else {
             return CustomerScript.SOBER;
         }
