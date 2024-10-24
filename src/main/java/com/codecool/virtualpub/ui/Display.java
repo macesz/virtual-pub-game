@@ -25,7 +25,7 @@ public class Display {
         try{
             displayMessage("\n" + "Bartender: " + script.getScripts().get(index) + "\n");
         } catch (IndexOutOfBoundsException e) {
-            displayMessage("Script not found");
+            displayMessage("\nScript not found");
         }
     }
 
@@ -39,7 +39,7 @@ public class Display {
         try{
             displayMessage("\n" + "Customer: " + script.getSentences().get(index) + "\n");
         } catch (Exception e) {
-            displayMessage("Script not found");
+            displayMessage("\nScript not found");
         }
     }
 
@@ -80,7 +80,7 @@ public class Display {
     }
 
     public void displayProfit(int profit) {
-        displayMessage("Your profit is " + profit + "Ft");
+        displayMessage("\nYour profit is " + profit + "Ft");
     }
 
     /**
@@ -92,7 +92,7 @@ public class Display {
     public void displayBartenderActions(String bartenderName, String[] actions) {
         displayMessage("\n" + bartenderName + "'s actions: ");
         for (int i = 1; i <= actions.length; i++) {
-            displayMessage(i + ": " + actions[i - 1]);
+            displayMessage("\n" + i + ": " + actions[i - 1]);
         }
     }
 
@@ -104,7 +104,7 @@ public class Display {
     public void displayDrinkName(String[] drinkNames) {
         displayMessage("\n" + "Drinks: ");
         for (int i = 1; i <= drinkNames.length; i++) {
-            displayMessage(i + ": " + drinkNames[i - 1]);
+            displayMessage("\n" + i + ": " + drinkNames[i - 1]);
         }
     }
 
@@ -121,7 +121,7 @@ public class Display {
         }
         displayMessage("Customers in line: ");
         for (int i = 1; i <= customerNames.length; i++) {
-            displayMessage(i + ": " + customerNames[i - 1]);
+            displayMessage("\n" + i + ": " + customerNames[i - 1]);
         }
     }
 
