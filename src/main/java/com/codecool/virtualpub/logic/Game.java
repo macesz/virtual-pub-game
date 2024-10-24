@@ -26,10 +26,7 @@ public class Game {
         int numberOfCustomers = input.getNumberOfCustomers();
         ArrayList<Customer> customers = generateCustomers(numberOfCustomers);
 
-        // todo kerd be a jatekostol a nevet
-
         List<Drink> stock = generateDrinks(numberOfCustomers);
-        // todo create stock
 
        Pub pub = new Pub(stock, customers, bartender);
 
@@ -46,20 +43,18 @@ public class Game {
     private ArrayList<Customer> generateCustomers(int numberOfCustomers) {
         ArrayList<Customer> customers = new ArrayList<>();
         for (int i = 0; i < numberOfCustomers; i++) {
-            int randomIndex = rand.nextInt(GameData.DATA.getCustomerNames().length);
-            customers.add(new Customer(GameData.DATA.getCustomerNames()[randomIndex]));
+            int randomIndex = rand.nextInt(GameData.customerNames.length);
+            customers.add(new Customer(GameData.customerNames[randomIndex]));
         }
         return customers;
     }
 
     private List<Drink> generateDrinks(int numberOfDrinks) {
         List<Drink> stock = new ArrayList<>();
-        stock.add(GameData.DATA.getStartingDrink());
+        stock.add(GameData.starterDrink);
         for (int i = 0; i < numberOfDrinks; i++) {
-            int randomIndex = rand.nextInt(GameData.DATA.getDrinks().size());
-            Drink drink = GameData.DATA.getDrinks().get(randomIndex);
-            Drink newDrink = new Drink(drink.getBrand(), drink.getDrinkType(), drink.getPrice());
-            stock.add(newDrink);
+            int randomIndex = rand.nextInt(GameData.drinks.size());
+            stock.add(new Drink(GameData.drinks.get(randomIndex)));
         }
         return stock;
     }

@@ -48,8 +48,6 @@ public class Customer {
         this.alcoholLevel += drink.getDrinkType().getBrainDamage() * amount;
     }
 
-    // todo
-
     public void speak(CustomerScript currentMood) {
         int idx = random.nextInt(currentMood.getSentences().size());  // Get random sentence
         Display display = new Display();
@@ -77,7 +75,6 @@ public class Customer {
     }
 
     public void drinkRefused() {
-        // todo angry speak
         this.refuseCount++;
         speak(getRefuse());
         this.alcoholLevel -= 10;
@@ -89,8 +86,6 @@ public class Customer {
         }
     }
 
-
-    // todo refactor
     public boolean isHappy() {
         return this.alcoholLevel <= this.sweatSpotMax && this.alcoholLevel >= this.sweatSpotMin;
     }

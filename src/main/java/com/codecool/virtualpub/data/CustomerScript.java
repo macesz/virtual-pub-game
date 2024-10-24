@@ -2,8 +2,6 @@ package com.codecool.virtualpub.data;
 
 import java.util.Arrays;
 import java.util.List;
-// todo ANGRY1, ANGRY2, ANGRY3
-// todo TIPSY
 public enum CustomerScript {
     DRUNK(Arrays.asList(
             "Heyyy... oooune mooore rooouuuund, pleeeease... just ooune!",
