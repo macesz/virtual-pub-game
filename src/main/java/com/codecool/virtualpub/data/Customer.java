@@ -13,6 +13,12 @@ public class Customer {
     private int refuseCount;
     private String[] sentences;
     private final Random random;
+    private static final int MIN_PERCENTAGE = 70;
+    private static final int MAX_PERCENTAGE = 90;  // MAX_PERCENTAGE is 70 + 21 - 1 = 90
+    private static final int PERCENTAGE_DIVISOR = 100;
+
+    private static final int MIN_RANGE = 5;
+    private static final int MAX_RANGE = 10;
 
 
     public Customer(String name) {
@@ -27,9 +33,9 @@ public class Customer {
     }
 
     private void generateSweatSpots() {
-        int sweetPercentage = random.nextInt(21) + 70;
-        this.sweatSpotMax = (int) (this.alcoholTolerance * (sweetPercentage / 100.0));
-        int range = random.nextInt(6) + 5;
+        int sweetPercentage = random.nextInt((MAX_PERCENTAGE - MIN_PERCENTAGE + 1)) + MIN_PERCENTAGE;
+        this.sweatSpotMax = (int) (this.alcoholTolerance * (sweetPercentage / (double) PERCENTAGE_DIVISOR));
+        int range = random.nextInt((MAX_RANGE - MIN_RANGE + 1)) + MIN_RANGE;
         this.sweatSpotMin = this.sweatSpotMax - range;
     }
 
