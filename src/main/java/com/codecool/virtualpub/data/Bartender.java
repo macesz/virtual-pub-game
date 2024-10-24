@@ -1,5 +1,9 @@
 package com.codecool.virtualpub.data;
 
+import com.codecool.virtualpub.ui.Display;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Bartender {
@@ -11,9 +15,16 @@ public class Bartender {
         this.random = new Random();
     }
     
-    public DrinkType getDrinkType() {
+    public Drink getDrink(List<Drink> drinks) {
         // todo get from player in console
-        return DrinkType.values()[random.nextInt(DrinkType.values().length)];
+        while (true) {
+            try{
+                // todo getInput()
+                return drinks.get(random.nextInt(drinks.size()));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     public Action[] getActions() {
@@ -29,11 +40,22 @@ public class Bartender {
     public String getName() {
         return name;
     }
+  
+    private void speak(BartenderScript script) {
+        int idx = random.nextInt(script.getScripts().size());  // Get random sentence
+        Display display = new Display();
+        display.displayScript(script, idx);
+    }
 
     public void welcome() {
-        int idx = random.nextInt(4);
-        String welcome = BartenderScript.WELCOME.getScripts().get(idx);
-        welcome = "Hello I'm " + name + ". " + welcome;
-        System.out.println(welcome);
+       speak(BartenderScript.WELCOME);
+    }
+
+    public void refuse() {
+        speak(BartenderScript.REFUSE_SERVICE);
+    }
+
+    public void thanks() {
+        speak(BartenderScript.THANK_YOU);
     }
 }
