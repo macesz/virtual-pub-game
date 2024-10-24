@@ -80,7 +80,7 @@ public class Display {
     }
 
     public void displayProfit(int profit) {
-        displayMessage("\nYour profit is " + profit + "Ft");
+        displayMessage("\nYour profit is " + profit + " Ft");
     }
 
     /**

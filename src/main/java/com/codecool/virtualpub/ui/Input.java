@@ -41,7 +41,7 @@ public class Input {
     private int getChoice(Bartender bartender, String[] actions){
         while (true) {
             try {
-                display.displayMessage("\nEnter choice: ");
+                display.displayMessage("\n\nEnter choice: ");
                 int input = Integer.parseInt(getInput());
                 if (input > actions.length || input < 1) {
                     throw new Exception();
@@ -64,7 +64,7 @@ public class Input {
      */
     public int getActionChoice(Bartender bartender, String[] actions){
         display.displayBartenderActions(bartender.getName(), actions );
-        display.displayMessage("\nChoose an action:");
+        display.displayMessage("\n\nChoose an action:");
         return getChoice(bartender, actions);
     }
 
@@ -79,7 +79,7 @@ public class Input {
      */
     public int getDrinkChoice(Bartender bartender, String[] drinks){
         display.displayDrinkName(drinks);
-        display.displayMessage("\nChoose a drink:");
+        display.displayMessage("\n\nChoose a drink:");
         return getChoice(bartender, drinks);
     }
 
@@ -89,14 +89,14 @@ public class Input {
      * @return A String representing the user's inputted name.
      */
     public String getName(){
-        display.displayMessage("\nEnter your name: ");
+        display.displayMessage("\n\nEnter your name: ");
         return getInput();
     }
 
     public int getDrinkAmount(int max) {
         while(true){
             try{
-                display.displayMessage("\nEnter drink amount: ");
+                display.displayMessage("\n\nEnter drink amount: ");
                 int amount = Integer.parseInt(getInput());
                 if (amount > max || amount < 1) {
                     throw new Exception("\nInvalid drink amount");
@@ -111,10 +111,10 @@ public class Input {
     public int getNumberOfCustomers() {
         while(true){
             try{
-                display.displayMessage("\nEnter number of Customers: ");
+                display.displayMessage("\n\nEnter number of Customers: ");
                 return Integer.parseInt(getInput());
             } catch (Exception e) {
-                display.displayMessage("\nInvalid number of Customers: ");
+                display.displayMessage("\n\nInvalid number of Customers: ");
             }
         }
     }
