@@ -7,13 +7,13 @@ import com.codecool.virtualpub.data.GameState;
 import com.codecool.virtualpub.ui.Display;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Game {
     public void Game() {
         ArrayList<Customer> customers = new ArrayList<Customer>();
         Display display = new Display();
-
+// BECOUSE of the dependency injection here i ONLY CRETAE ONE OBJECT
+        //  not objects of every costumer => less memory usage
         for (int i = 0; i < 10; i++) {
             String name = "random bela";
             customers.add(new Customer(name, display));
@@ -22,7 +22,7 @@ public class Game {
         // todo kerd be a jatekostol a nevet
         Bartender bartender = new Bartender("joe");
 
-        List<Drink> stock = new ArrayList<Drink>();
+        ArrayList<Drink> stock = new ArrayList<Drink>();
         // todo create stock
 
         Pub pub = new Pub(stock, customers, bartender);

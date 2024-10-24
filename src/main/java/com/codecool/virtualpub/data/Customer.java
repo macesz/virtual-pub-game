@@ -81,10 +81,12 @@ public class Customer {
     }
 
     public boolean isAngry() {
-        return this.alcoholLevel > this.sweatSpotMax || this.refuseCount > 3;
+
+        return this.refuseCount > 0;
     }
 
     public boolean isPassedOut() {
+
         return this.alcoholLevel >= this.alcoholTolerance;
     }
 }
