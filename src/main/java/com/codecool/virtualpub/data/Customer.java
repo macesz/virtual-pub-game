@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class Customer {
     private final String name;
-    private int sweatSpotMin;
-    private int sweatSpotMax;
+    private int sweetSpotMin;
+    private int sweetSpotMax;
     private int alcoholTolerance;
     private int alcoholLevel;
     private int refuseCount;
@@ -27,16 +27,16 @@ public class Customer {
         this.random = new Random();
         this.alcoholTolerance = random.nextInt(100 + 1 - 50) + 50;
 
-        this.generateSweatSpots();
+        this.generateSweetSpots();
         this.alcoholLevel = 0;
         this.refuseCount = 0;
     }
 
-    private void generateSweatSpots() {
+    private void generateSweetSpots() {
         int sweetPercentage = random.nextInt((MAX_PERCENTAGE - MIN_PERCENTAGE + 1)) + MIN_PERCENTAGE;
-        this.sweatSpotMax = (int) (this.alcoholTolerance * (sweetPercentage / (double) PERCENTAGE_DIVISOR));
+        this.sweetSpotMax = (int) (this.alcoholTolerance * (sweetPercentage / (double) PERCENTAGE_DIVISOR));
         int range = random.nextInt((MAX_RANGE - MIN_RANGE + 1)) + MIN_RANGE;
-        this.sweatSpotMin = this.sweatSpotMax - range;
+        this.sweetSpotMin = this.sweetSpotMax - range;
     }
 
     public String getName() {
@@ -82,9 +82,10 @@ public class Customer {
     public void drinkRefused() {
         this.refuseCount++;
         speak(getRefuse());
+
         this.alcoholLevel -= 10;
         if (isHappy()) {
-            this.alcoholLevel = this.sweatSpotMin - 10;
+            this.alcoholLevel = this.sweetSpotMin - 10;
         }
         if (this.alcoholLevel < 0) {
             this.alcoholLevel = 0;
@@ -92,7 +93,7 @@ public class Customer {
     }
 
     public boolean isHappy() {
-        return this.alcoholLevel <= this.sweatSpotMax && this.alcoholLevel >= this.sweatSpotMin;
+        return this.alcoholLevel <= this.sweetSpotMax && this.alcoholLevel >= this.sweetSpotMin;
     }
 
     public boolean isTipsy() {
@@ -102,7 +103,7 @@ public class Customer {
 
     public boolean isDrunk() {
 
-        return this.alcoholLevel > this.sweatSpotMax;
+        return this.alcoholLevel > this.sweetSpotMax;
     }
 
     public boolean isAngry() {

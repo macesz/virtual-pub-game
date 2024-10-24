@@ -40,9 +40,4 @@ public class Drink {
         this.amount = amount;
     }
 
-    // return with price of amount
-    public int pour(int amount) {
-        this.amount -= amount;
-        return amount * price;
-    }
 }

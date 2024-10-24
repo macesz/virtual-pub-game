@@ -59,8 +59,13 @@ public class Pub {
         while (state == GameState.INGAME) {
             Customer customer = getNextCustomer();
             this.bartender.welcome();
-
-            customer.speak(customer.getMood());
+            try{
+                Thread.sleep(700);
+                customer.speak(customer.getMood());
+                Thread.sleep(700);
+            }catch(InterruptedException e){
+                display.displayMessage("interrupted sleep");
+            }
 
             while(true) {
                 Action action = bartender.getAction();
@@ -116,7 +121,12 @@ public class Pub {
 
     private void moveCustomer(Customer customer) {
         if (customer.isHappy()) {
-            customer.speak(CustomerScript.HAPPY);
+            try{
+                Thread.sleep(800);
+                customer.speak(CustomerScript.HAPPY);
+            }catch(InterruptedException e){
+                display.displayMessage("interrupted sleep");
+            }
             removeCustomer(customer);
         } else {
             sendToEndOfLine(customer);
@@ -137,8 +147,8 @@ public class Pub {
 
     private void refuse(Customer customer) {
         bartender.refuse();
-        // todo angry speak
         customer.drinkRefused();
+        display.printNextSeparator();
     }
 
     private void serve(Customer customer) {

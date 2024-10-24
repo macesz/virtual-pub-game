@@ -33,10 +33,10 @@ public class Game {
        GameState state = pub.serveCustomers();
 
         switch (state) {
-            case WIN -> display.displayMessage("You win!" + "profit: " + pub.getProfit());
-            case ANGRY -> display.displayMessage("Customer ANGRY");
-            case PASSEDOUT -> display.displayMessage("Customer PASSEDOUT");
-            case OUT_OF_DRINKS -> display.displayMessage("Customer OUT OF DRINKS");
+            case WIN -> display.displayMessage("You won!" + "profit: " + pub.getProfit());
+            case ANGRY -> display.displayMessage("Customer's TOO ANGRY");
+            case PASSEDOUT -> display.displayMessage("Customer's PASSED OUT");
+            case OUT_OF_DRINKS -> display.displayMessage("Pub's OUT OF DRINKS");
         }
     }
 
