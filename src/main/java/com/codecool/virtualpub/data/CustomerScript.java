@@ -36,23 +36,39 @@ public enum CustomerScript {
             "Bartender, I’ll have one more… you’re making magic over there, I swear!",
             "Just one more round! I’m fiiine, trust me… make it a light one though!")),
     ANGRY1(Arrays.asList(
-            "Why’s it taking so long? I’ve been waiting forever for a simple drink!",
-            "Seriously, you call that a pour? What kind of joke is this place?",
-            "You’d better fix this or I’m going somewhere else!",
-            "All I asked for was a drink! How hard can that be?",
-            "This is ridiculous… do your job and get me what I ordered!")),
+            "Why are you like this? I’ve been waiting forever for a simple drink! " +
+                    "This must be the last time you’ve turned me away!",
+            "Seriously, you call yourself a bartender? What kind of joke is this place? " +
+                    "This is the first and last time you’ve refused me!",
+            "You’d better fix this or I’m going somewhere else! " +
+                    "You're cutting me off for no reason!",
+            "All I asked for was a drink! How hard can that be? " +
+                    "You can tell me no, but I’m not done yet!",
+            "This is ridiculous… do your job and get me what I ordered! " +
+                    "I never have been rejected before, and I don't like it. " +
+                    "I’m not gonna leave empty-handed again!")),
     ANGRY2(Arrays.asList(
-            "What the hell is wrong with you? I asked for a drink 10 minutes ago!",
-            "I’m paying good money here, and this is how you treat me? You better fix this now!",
-            "You think it’s funny making me wait? I want my damn drink!",
-            "Are you ignoring me? I swear, if I don’t get my drink now, I’ll cause a scene!",
-            "This service is a joke! Get me my drink or I’m talking to the manager!")),
+            "What the hell is wrong with you? " +
+                    "I asked for a drink 10 minutes ago, and this is the second time you’ve turned me down!",
+            "I’m paying good money here, and this is how you treat me? " +
+                    "You’ve already refused me twice, you better fix this now!",
+            "You think it’s funny making me wait? I want my damn drink! " +
+                    "This is the second time you’ve refused me!",
+            "Are you ignoring me? I swear, if I don’t get my drink now, I’ll cause a scene! " +
+                    "You’ve already said no twice, I’m not taking it again!",
+            "This service is a joke! Get me my drink or I’m talking to the manager! " +
+                    "Twice you’ve rejected me, and I won’t let it happen again!")),
     ANGRY3(Arrays.asList(
-            "This is BS! You’re screwing me over on purpose, aren’t you?",
-            "What do I have to do to get a damn drink around here? This is outrageous!",
-            "I’m not leaving until I get what I asked for, you hear me? This place is a disgrace!",
-            "You think you can treat me like this? I’ll ruin your night if you don’t give me my drink!",
-            "I’ve had it with this place! You’re the worst bartender I’ve ever seen. Where’s my drink?!"));
+            "This is BS! You’re screwing me over on purpose, aren’t you? " +
+                    "Three times you’ve turned me down, enough is enough!",
+            "What do I have to do to get a damn drink around here? " +
+                    "This is outrageous! You’ve refused me three times already!",
+            "I’m not leaving until I get what I asked for, you hear me? " +
+                    "This place is a disgrace! Three rejections, and I’m done playing nice!",
+            "You think you can treat me like this? " +
+                    "I’ll ruin your night if you don’t give me my drink! That’s the third time you’ve said no!",
+            "I’ve had it with this place! You’re the worst bartender I’ve ever seen. " +
+                    "Where’s my drink?! Three times rejected? I’m not standing for it anymore!"));
 
 
     private final List<String> sentences;

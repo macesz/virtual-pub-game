@@ -10,8 +10,8 @@ import java.util.Random;
 public class Bartender {
     private String name;
     private final Random random;
-    private Input input = new Input();
-    private Display display = new Display();
+    private final Input input = new Input();
+    private final Display display = new Display();
 
 
     public Bartender(String playerName) {
@@ -47,7 +47,6 @@ public class Bartender {
   
     private void speak(BartenderScript script) {
         int idx = random.nextInt(script.getScripts().size());  // Get random sentence
-        Display display = new Display();
         display.displayScript(script, idx);
     }
 
