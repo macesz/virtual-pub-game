@@ -13,6 +13,13 @@ public class Drink {
         this.amount = drinkType.getAmountOfPours();
     }
 
+    public Drink(Drink other) {
+        this.brand = other.brand;
+        this.drinkType = other.drinkType;
+        this.price = other.price;
+        this.amount = other.amount;
+    }
+
     public String getBrand() {
         return brand;
     }
