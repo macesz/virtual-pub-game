@@ -27,11 +27,20 @@ public class Bartender {
         }
     }
 
+    public Action[] getActions() {
+    // todo get from player in console
+    return Action.values();
+    }
+
     public int getDrinkAmount() {
         // todo get from player in console
         return 1;
     }
 
+    public String getName() {
+        return name;
+    }
+  
     private void speak(BartenderScript script) {
         int idx = random.nextInt(script.getScripts().size());  // Get random sentence
         Display display = new Display();

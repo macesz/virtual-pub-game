@@ -58,6 +58,7 @@ public class Pub {
             Customer customer = getNextCustomer();
             this.bartender.welcome();
 
+            //display(customer.speak());
             // todo shouldn't do angry or happy script
             customer.speak();
 
