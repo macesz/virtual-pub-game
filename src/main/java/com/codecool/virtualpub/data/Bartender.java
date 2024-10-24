@@ -16,9 +16,18 @@ public class Bartender {
         return DrinkType.values()[random.nextInt(DrinkType.values().length)];
     }
 
+    public Action[] getActions() {
+    // todo get from player in console
+    return Action.values();
+    }
+
     public int getDrinkAmount() {
         // todo get from player in console
         return 1;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void welcome() {

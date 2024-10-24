@@ -55,7 +55,7 @@ public class Pub {
 
             this.bartender.welcome();
 
-            display(customer.speak());
+            //display(customer.speak());
 
             // bekerjuk a bartenderen keresytul a console bol hogy mit es mennyit akarunk tolteni
             DrinkType drinkType = this.bartender.getDrinkType();
