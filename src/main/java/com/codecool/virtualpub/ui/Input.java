@@ -41,7 +41,7 @@ public class Input {
     private int getChoice(Bartender bartender, String[] actions){
         while (true) {
             try {
-                display.displayMessage("\n\nEnter choice: ");
+                display.displayMessage("\n\nEnter choice:  \n");
                 int input = Integer.parseInt(getInput());
                 if (input > actions.length || input < 1) {
                     throw new Exception();
@@ -64,7 +64,7 @@ public class Input {
      */
     public int getActionChoice(Bartender bartender, String[] actions){
         display.displayBartenderActions(bartender.getName(), actions );
-        display.displayMessage("\n\nChoose an action:");
+        display.displayMessage("\n\nChoose an action: \n");
         return getChoice(bartender, actions);
     }
 
@@ -79,7 +79,7 @@ public class Input {
      */
     public int getDrinkChoice(Bartender bartender, String[] drinks){
         display.displayDrinkName(drinks);
-        display.displayMessage("\n\nChoose a drink:");
+        display.displayMessage("\n\nChoose a drink: \n");
         return getChoice(bartender, drinks);
     }
 
@@ -93,27 +93,42 @@ public class Input {
         return getInput();
     }
 
+    /**
+     * Prompts the user to enter a drink amount within a specified range.
+     * The method will continuously prompt the user until a valid input is provided.
+     *
+     * @param max the maximum allowed drink amount
+     * @return the valid drink amount entered by the user
+     * @throws NumberFormatException if the input is not a valid integer
+     */
     public int getDrinkAmount(int max) {
         while(true){
             try{
-                display.displayMessage("\n\nEnter drink amount: ");
+                display.displayMessage("\n\nEnter drink amount: \n");
                 int amount = Integer.parseInt(getInput());
                 if (amount > max || amount < 1) {
-                    throw new Exception("\nInvalid drink amount");
+                    throw new NumberFormatException("\nInvalid drink amount");
                 }
                 return amount;
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 display.displayMessage(e.getMessage());
             }
         }
     }
 
+    /**
+     * Prompts the user to enter the number of customers.
+     * The method will continuously prompt the user until a valid integer is provided.
+     *
+     * @return the valid number of customers entered by the user
+     * @throws NumberFormatException if the input is not a valid integer
+     */
     public int getNumberOfCustomers() {
         while(true){
             try{
                 display.displayMessage("\n\nEnter number of Customers: ");
                 return Integer.parseInt(getInput());
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
                 display.displayMessage("\n\nInvalid number of Customers: ");
             }
         }

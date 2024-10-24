@@ -75,7 +75,12 @@ public class Display {
 
         displayMessage("\nStock: ");
         for (StringBuilder stringBuilder : drinkTypeMap.values()) {
-            displayMessage(stringBuilder.toString());
+            try{
+                Thread.sleep(700);
+                displayMessage(stringBuilder.toString());
+            }catch(InterruptedException e){
+                displayMessage("interrupted sleep");
+            }
         }
     }
 
@@ -91,8 +96,13 @@ public class Display {
      */
     public void displayBartenderActions(String bartenderName, String[] actions) {
         displayMessage("\n" + bartenderName + "'s actions: ");
-        for (int i = 1; i <= actions.length; i++) {
-            displayMessage("\n" + i + ": " + actions[i - 1]);
+        try{
+            for (int i = 1; i <= actions.length; i++) {
+                displayMessage("\n" + i + ": " + actions[i - 1]);
+                Thread.sleep(700);
+            }
+        }catch (InterruptedException e){
+            displayMessage("interrupted sleep");
         }
     }
 
@@ -103,8 +113,13 @@ public class Display {
      */
     public void displayDrinkName(String[] drinkNames) {
         displayMessage("\n" + "Drinks: ");
-        for (int i = 1; i <= drinkNames.length; i++) {
-            displayMessage("\n" + i + ": " + drinkNames[i - 1]);
+        try{
+            for (int i = 1; i <= drinkNames.length; i++) {
+                displayMessage("\n" + i + ": " + drinkNames[i - 1]);
+                Thread.sleep(500);
+            }
+        }catch (InterruptedException e){
+            displayMessage("interrupted sleep");
         }
     }
 
@@ -115,9 +130,14 @@ public class Display {
      * @param customerNames     An optional array of customer names. If null, names are not displayed.
      */
     public void displayRemainingCustomers(int numberOfCustomers, String[] customerNames) {
-        displayMessage("\nThere are " + numberOfCustomers + " customers in the pub\n");
         if (customerNames == null) {
             return;
+        }
+        try{
+            Thread.sleep(800);
+            displayMessage("\nThere are " + numberOfCustomers + " customers in the pub\n");
+        }catch(InterruptedException e){
+            displayMessage("interrupted sleep");
         }
         displayMessage("Customers in line: ");
         for (int i = 1; i <= customerNames.length; i++) {
@@ -133,4 +153,12 @@ public class Display {
     public void displayRemainingCustomers(int numberOfCustomers) {
         displayRemainingCustomers(numberOfCustomers, null);
     }
+
+    public void printNextSeparator() {
+        System.out.println("__  __ ______  __  __ _______");
+        System.out.println("| \\| || ____|  \\ \\/ /   | | ");
+        System.out.println("| .`  || __|    .`.`    | | ");
+        System.out.println("|_| \\_||_____| /_/\\_\\   |_|  ");
+    }
 }
+
