@@ -11,16 +11,25 @@ public class Bartender {
     private String name;
     private final Random random;
     private Input input = new Input();
+    private Display display = new Display();
+
 
     public Bartender(String playerName) {
         this.name = playerName;
         this.random = new Random();
     }
-    
+
     public Drink getDrink(List<Drink> drinks) {
         String[] drinkNames = drinks.stream().map(Drink::getBrand).toArray(String[]::new);
-        int drinkIndex = input.getDrinkChoice(this, drinkNames);
-        return drinks.get(drinkIndex - 1);
+        while (true) try {
+            int drinkIndex = input.getDrinkChoice(this, drinkNames);
+            if (drinks.get(drinkIndex - 1).getAmount() <= 0) {
+                throw new Exception();
+            }
+            return drinks.get(drinkIndex - 1);
+        } catch (Exception e) {
+            display.displayMessage("No amount left");
+        }
     }
 
     public Action getAction() {
