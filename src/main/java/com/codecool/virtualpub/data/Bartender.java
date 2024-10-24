@@ -11,11 +11,13 @@ public class Bartender {
     private String name;
     private final Random random;
     private Input input;
+    private Display display;
 
     public Bartender(String playerName) {
         this.name = playerName;
         this.random = new Random();
         this.input = new Input();
+        this.display = new Display();
     }
 
     public Drink getDrink(List<Drink> drinks) {
@@ -27,7 +29,7 @@ public class Bartender {
             }
             return drinks.get(drinkIndex - 1);
         } catch (Exception e) {
-            display.displayMessage("No amount left");
+            display.displayMessage("\nNo amount left");
         }
     }
 
