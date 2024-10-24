@@ -2,7 +2,6 @@ package com.codecool.virtualpub.data;
 
 import com.codecool.virtualpub.ui.Display;
 
-import java.util.List;
 import java.util.Random;
 
 public class Customer {
@@ -14,6 +13,12 @@ public class Customer {
     private int refuseCount;
     private String[] sentences;
     private final Random random;
+    private static final int MIN_PERCENTAGE = 70;
+    private static final int MAX_PERCENTAGE = 90;  // MAX_PERCENTAGE is 70 + 21 - 1 = 90
+    private static final int PERCENTAGE_DIVISOR = 100;
+
+    private static final int MIN_RANGE = 5;
+    private static final int MAX_RANGE = 10;
 
 
     public Customer(String name) {
@@ -28,9 +33,9 @@ public class Customer {
     }
 
     private void generateSweatSpots() {
-        int sweetPercental = random.nextInt(90 + 1 - 70) + 70;
-        this.sweatSpotMax = this.alcoholTolerance / 100 * sweetPercental;
-        int range = random.nextInt(10 + 1 - 5) + 5;
+        int sweetPercentage = random.nextInt((MAX_PERCENTAGE - MIN_PERCENTAGE + 1)) + MIN_PERCENTAGE;
+        this.sweatSpotMax = (int) (this.alcoholTolerance * (sweetPercentage / (double) PERCENTAGE_DIVISOR));
+        int range = random.nextInt((MAX_RANGE - MIN_RANGE + 1)) + MIN_RANGE;
         this.sweatSpotMin = this.sweatSpotMax - range;
     }
 
@@ -53,21 +58,27 @@ public class Customer {
     }
 
     private CustomerScript getMood() {
-        // todo refactor (switch case)
-        if (this.alcoholLevel > this.alcoholTolerance) {
+        if (isDrunk()) {
             return CustomerScript.DRUNK;
+        } else if (isTipsy()) {
+            return CustomerScript.TIPSY;
         } else if (isHappy()) {
             return CustomerScript.HAPPY;
-        } else if (isAngry()) {
+        } else if (refuseCount == 1) {
             return CustomerScript.ANGRY1;
-        } else {
-            return CustomerScript.SOBER;
+        } else if (refuseCount == 2) {
+            return CustomerScript.ANGRY2;
+        } else if (refuseCount == 3) {
+        } else if (isAngry()) {
+            return CustomerScript.ANGRY3;
         }
+        return CustomerScript.SOBER;
     }
 
     public void drinkRefused() {
         // todo angry speak
         this.refuseCount++;
+        speak();
         this.alcoholLevel -= 10;
         if (this.alcoholLevel < 0) {
             this.alcoholLevel = 0;
@@ -80,8 +91,17 @@ public class Customer {
         return this.alcoholLevel <= this.sweatSpotMax && this.alcoholLevel >= this.sweatSpotMin;
     }
 
+    public boolean isTipsy() {
+        return this.alcoholLevel > 15;
+    }
+
+    public boolean isDrunk() {
+        return this.alcoholLevel > this.alcoholTolerance;
+    }
+
     public boolean isAngry() {
-        return this.alcoholLevel > this.sweatSpotMax || this.refuseCount > 3;
+
+        return this.refuseCount > 0;
     }
 
     public boolean isPassedOut() {
