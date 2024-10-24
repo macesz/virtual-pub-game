@@ -57,15 +57,19 @@ public enum GameData {
                     new Drink("Unicum", DrinkType.LIQUOR, 900),  // Hungarian liquor
                     new Drink("Baileys", DrinkType.LIQUOR, 1100),
                     new Drink("Kahlua", DrinkType.LIQUOR, 1050)
-            )
-    );
+            ),
+            new Drink("Kőbányai", DrinkType.BEER, 600)
+    )
+    ;
 
     private String[] customerNames;
     private List<Drink> drinks;
+    private Drink startingDrink;
 
-    GameData(String[] customerNames, List<Drink> drinks) {
+    GameData(String[] customerNames, List<Drink> drinks, Drink startingDrink) {
         this.customerNames = customerNames;
         this.drinks = drinks;
+        this.startingDrink = startingDrink;
     }
 
     public String[] getCustomerNames() {
@@ -75,4 +79,6 @@ public enum GameData {
     public List<Drink> getDrinks() {
         return drinks;
     }
+
+    public Drink getStartingDrink() {return startingDrink;}
 }

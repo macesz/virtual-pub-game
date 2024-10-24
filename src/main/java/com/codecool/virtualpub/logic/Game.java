@@ -54,6 +54,7 @@ public class Game {
 
     private List<Drink> generateDrinks(int numberOfDrinks) {
         List<Drink> stock = new ArrayList<>();
+        stock.add(GameData.DATA.getStartingDrink());
         for (int i = 0; i < numberOfDrinks; i++) {
             int randomIndex = rand.nextInt(GameData.DATA.getDrinks().size());
             Drink drink = GameData.DATA.getDrinks().get(randomIndex);
