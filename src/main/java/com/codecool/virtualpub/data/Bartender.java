@@ -52,6 +52,7 @@ public class Bartender {
     }
 
     public void welcome() {
+        display.displayMessage("\n-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --\n");
        speak(BartenderScript.WELCOME);
     }
 

@@ -50,37 +50,40 @@ public class Customer {
 
     // todo
 
-    public void speak() {
-        CustomerScript currentMood = getMood();  // Determine mood
+    public void speak(CustomerScript currentMood) {
         int idx = random.nextInt(currentMood.getSentences().size());  // Get random sentence
         Display display = new Display();
         display.displayScript(currentMood, idx);
     }
 
-    private CustomerScript getMood() {
+    public CustomerScript getMood() {
         if (isDrunk()) {
             return CustomerScript.DRUNK;
-        } else if (isTipsy()) {
+        }
+        if (isTipsy()) {
             return CustomerScript.TIPSY;
-        } else if (isHappy()) {
-            return CustomerScript.HAPPY;
-        } else if (refuseCount == 1) {
-            return CustomerScript.ANGRY1;
-        } else if (refuseCount == 2) {
-            return CustomerScript.ANGRY2;
-        } else if (refuseCount == 3) {
-            return CustomerScript.ANGRY3;
-        } else if (isAngry()) {
-            return CustomerScript.ANGRY3;
         }
         return CustomerScript.SOBER;
+    }
+
+    private CustomerScript getRefuse() {
+        if (refuseCount == 1) {
+            return CustomerScript.ANGRY1;
+        }
+        if (refuseCount == 2) {
+            return CustomerScript.ANGRY2;
+        }
+        return CustomerScript.ANGRY3;
     }
 
     public void drinkRefused() {
         // todo angry speak
         this.refuseCount++;
-        speak();
+        speak(getRefuse());
         this.alcoholLevel -= 10;
+        if (isHappy()) {
+            this.alcoholLevel = this.sweatSpotMin - 10;
+        }
         if (this.alcoholLevel < 0) {
             this.alcoholLevel = 0;
         }
@@ -94,17 +97,17 @@ public class Customer {
 
     public boolean isTipsy() {
 
-        return this.alcoholLevel >= 15;
+        return this.alcoholLevel >= 20;
     }
 
     public boolean isDrunk() {
 
-        return this.alcoholLevel > this.alcoholTolerance;
+        return this.alcoholLevel > this.sweatSpotMax;
     }
 
     public boolean isAngry() {
 
-        return this.refuseCount > 0;
+        return this.refuseCount > 2;
     }
 
     public boolean isPassedOut() {

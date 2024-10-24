@@ -60,9 +60,7 @@ public class Pub {
             Customer customer = getNextCustomer();
             this.bartender.welcome();
 
-            //display(customer.speak());
-            // todo shouldn't do angry or happy script
-            customer.speak();
+            customer.speak(customer.getMood());
 
             while(true) {
                 Action action = bartender.getAction();
@@ -98,7 +96,7 @@ public class Pub {
     }
 
     private GameState getGameState(GameState state, Customer customer) {
-        if (stock.isEmpty()) {
+        if (customers.isEmpty()) {
             state = GameState.WIN;
         }
 
@@ -118,7 +116,7 @@ public class Pub {
 
     private void moveCustomer(Customer customer) {
         if (customer.isHappy()) {
-            // todo happy speak
+            customer.speak(CustomerScript.HAPPY);
             removeCustomer(customer);
         } else {
             sendToEndOfLine(customer);
