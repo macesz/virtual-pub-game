@@ -69,6 +69,7 @@ public class Customer {
         } else if (refuseCount == 2) {
             return CustomerScript.ANGRY2;
         } else if (refuseCount == 3) {
+            return CustomerScript.ANGRY3;
         } else if (isAngry()) {
             return CustomerScript.ANGRY3;
         }
@@ -92,10 +93,12 @@ public class Customer {
     }
 
     public boolean isTipsy() {
-        return this.alcoholLevel > 15;
+
+        return this.alcoholLevel >= 15;
     }
 
     public boolean isDrunk() {
+
         return this.alcoholLevel > this.alcoholTolerance;
     }
 
