@@ -65,9 +65,8 @@ public class Customer {
         } else if (refuseCount == 3) {
         } else if (isAngry()) {
             return CustomerScript.ANGRY3;
-        } else {
-            return CustomerScript.SOBER;
         }
+        return CustomerScript.SOBER;
     }
 
     public void drinkRefused() {
