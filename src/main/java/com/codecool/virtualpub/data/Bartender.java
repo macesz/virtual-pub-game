@@ -47,7 +47,12 @@ public class Bartender {
     }
   
     private void speak(BartenderScript script) {
-        int idx = random.nextInt(script.getScripts().size());  // Get random sentence
+        int idx = random.nextInt(script.getScripts().size()); // Get random sentence
+        try{
+            Thread.sleep(1000);
+        }catch(InterruptedException e){
+            display.displayMessage("interrupted sleep");
+        }
         display.displayScript(script, idx);
     }
 

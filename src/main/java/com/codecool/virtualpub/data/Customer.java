@@ -51,6 +51,11 @@ public class Customer {
     public void speak(CustomerScript currentMood) {
         int idx = random.nextInt(currentMood.getSentences().size());  // Get random sentence
         Display display = new Display();
+        try{
+            Thread.sleep(1000);
+        }catch(InterruptedException e){
+            display.displayMessage("interrupted sleep");
+        }
         display.displayScript(currentMood, idx);
     }
 
