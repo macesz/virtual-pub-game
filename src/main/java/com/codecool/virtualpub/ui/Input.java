@@ -7,8 +7,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Input {
-    Display display = new Display();
-    Scanner scanner = new Scanner(System.in);
+    Display display;
+    Scanner scanner;
+
+    public Input() {
+        scanner = new Scanner(System.in);
+        display = new Display();
+    }
 
     /**
      * Retrieves a line of input from the user.
@@ -94,6 +99,17 @@ public class Input {
                 return amount;
             } catch (Exception e) {
                 display.displayMessage(e.getMessage());
+            }
+        }
+    }
+
+    public int getNumberOfCustomers() {
+        while(true){
+            try{
+                display.displayMessage("\nEnter number of Customers: ");
+                return Integer.parseInt(getInput());
+            } catch (Exception e) {
+                display.displayMessage("\nInvalid number of Customers: ");
             }
         }
     }
