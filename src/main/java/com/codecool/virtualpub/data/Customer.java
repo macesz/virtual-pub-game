@@ -61,9 +61,10 @@ public class Customer {
         } else if (refuseCount == 1) {
             return CustomerScript.ANGRY1;
         } else if (refuseCount == 2) {
-            return CustomerScript.ANGRY1;
+            return CustomerScript.ANGRY2;
         } else if (refuseCount == 3) {
-            return CustomerScript.ANGRY1;
+        } else if (isAngry()) {
+            return CustomerScript.ANGRY3;
         } else {
             return CustomerScript.SOBER;
         }

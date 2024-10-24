@@ -12,7 +12,7 @@ public class Display {
      * @param message The message to be displayed.
      */
     public void displayMessage(String message) {
-        System.out.println(message);
+        System.out.print(message);
     }
 
     /**
@@ -99,7 +99,7 @@ public class Display {
      */
     public void displayDrinkName(String[] drinkNames) {
         System.out.println("\n" + "Drinks: ");
-        for (int i = 1; i < drinkNames.length; i++) {
+        for (int i = 1; i <= drinkNames.length; i++) {
             System.out.println(i + ": " + drinkNames[i - 1]);
         }
     }

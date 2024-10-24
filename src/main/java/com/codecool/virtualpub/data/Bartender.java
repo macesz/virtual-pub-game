@@ -1,14 +1,16 @@
 package com.codecool.virtualpub.data;
 
 import com.codecool.virtualpub.ui.Display;
+import com.codecool.virtualpub.ui.Input;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class Bartender {
     private String name;
     private final Random random;
+    private Input input = new Input();
 
     public Bartender(String playerName) {
         this.name = playerName;
@@ -16,25 +18,18 @@ public class Bartender {
     }
     
     public Drink getDrink(List<Drink> drinks) {
-        // todo get from player in console
-        while (true) {
-            try{
-                // todo getInput()
-                return drinks.get(random.nextInt(drinks.size()));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
+        String[] drinkNames = drinks.stream().map(Drink::getBrand).toArray(String[]::new);
+        int drinkIndex = input.getDrinkChoice(this, drinkNames);
+        return drinks.get(drinkIndex - 1);
     }
 
-    public Action[] getActions() {
-    // todo get from player in console
-    return Action.values();
+    public Action getAction() {
+        int index = input.getActionChoice(this, Arrays.stream(Action.values()).map(Action::getAction).toArray(String[]::new));
+        return Action.values()[index - 1];
     }
 
-    public int getDrinkAmount() {
-        // todo get from player in console
-        return 1;
+    public int getDrinkAmount(int max) {
+        return input.getDrinkAmount(max);
     }
 
     public String getName() {
