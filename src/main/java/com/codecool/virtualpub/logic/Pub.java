@@ -13,14 +13,16 @@ public class Pub {
     private List<Customer> customers;
     private Bartender bartender;
     private int profit;
-    private Display display = new Display();
-    private Input input = new Input();
+    private Display display;
+    private Input input;
 
     public Pub(List<Drink> stock, ArrayList<Customer> customers, Bartender bartender) {
         this.stock = new ArrayList<>(stock);
         this.customers = new ArrayList<>(customers);
         this.bartender = bartender;
         this.profit = 0;
+        this.display = new Display();
+        this.input = new Input();
     }
 
     public ArrayList<String> getStock() {

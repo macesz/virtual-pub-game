@@ -10,13 +10,12 @@ import java.util.Random;
 public class Bartender {
     private String name;
     private final Random random;
-    private final Input input = new Input();
-    private final Display display = new Display();
-
+    private Input input;
 
     public Bartender(String playerName) {
         this.name = playerName;
         this.random = new Random();
+        this.input = new Input();
     }
 
     public Drink getDrink(List<Drink> drinks) {
