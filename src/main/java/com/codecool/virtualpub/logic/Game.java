@@ -55,7 +55,9 @@ public class Game {
         List<Drink> stock = new ArrayList<>();
         for (int i = 0; i < numberOfDrinks; i++) {
             int randomIndex = rand.nextInt(GameData.DATA.getDrinks().size());
-            stock.add(GameData.DATA.getDrinks().get(randomIndex));
+            Drink drink = GameData.DATA.getDrinks().get(randomIndex);
+            Drink newDrink = new Drink(drink.getBrand(), drink.getDrinkType(), drink.getPrice());
+            stock.add(newDrink);
         }
         return stock;
     }
