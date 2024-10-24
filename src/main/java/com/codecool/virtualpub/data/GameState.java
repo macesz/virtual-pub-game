@@ -4,5 +4,6 @@ public enum GameState {
     INGAME,
     WIN,
     ANGRY,
-    PASSEDOUT
+    PASSEDOUT,
+    OUT_OF_DRINKS
 }

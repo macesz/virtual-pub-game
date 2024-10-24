@@ -106,6 +106,10 @@ public class Pub {
         if (customer.isPassedOut()) {
             state = GameState.PASSEDOUT;
         }
+
+        if (stock.stream().allMatch(drink -> drink.getAmount() == 0)) {
+            state = GameState.OUT_OF_DRINKS;
+        }
         return state;
     }
 

@@ -39,6 +39,7 @@ public class Game {
             case WIN -> display.displayMessage("You win!" + "profit: " + pub.getProfit());
             case ANGRY -> display.displayMessage("Customer ANGRY");
             case PASSEDOUT -> display.displayMessage("Customer PASSEDOUT");
+            case OUT_OF_DRINKS -> display.displayMessage("Customer OUT OF DRINKS");
         }
     }
 
