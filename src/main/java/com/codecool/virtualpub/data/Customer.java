@@ -2,7 +2,6 @@ package com.codecool.virtualpub.data;
 
 import com.codecool.virtualpub.ui.Display;
 
-import java.util.List;
 import java.util.Random;
 
 public class Customer {
@@ -28,9 +27,9 @@ public class Customer {
     }
 
     private void generateSweatSpots() {
-        int sweetPercental = random.nextInt(90 + 1 - 70) + 70;
-        this.sweatSpotMax = this.alcoholTolerance / 100 * sweetPercental;
-        int range = random.nextInt(10 + 1 - 5) + 5;
+        int sweetPercentage = random.nextInt(21) + 70;
+        this.sweatSpotMax = (int) (this.alcoholTolerance * (sweetPercentage / 100.0));
+        int range = random.nextInt(6) + 5;
         this.sweatSpotMin = this.sweatSpotMax - range;
     }
 
@@ -53,13 +52,18 @@ public class Customer {
     }
 
     private CustomerScript getMood() {
-        // todo refactor (switch case)
-        if (this.alcoholLevel > this.alcoholTolerance) {
+        if (isDrunk()) {
             return CustomerScript.DRUNK;
+        } else if (isTipsy()) {
+            return CustomerScript.TIPSY;
         } else if (isHappy()) {
             return CustomerScript.HAPPY;
-        } else if (isAngry()) {
-            return CustomerScript.ANGRY;
+        } else if (refuseCount == 1) {
+            return CustomerScript.ANGRY1;
+        } else if (refuseCount == 2) {
+            return CustomerScript.ANGRY1;
+        } else if (refuseCount == 3) {
+            return CustomerScript.ANGRY1;
         } else {
             return CustomerScript.SOBER;
         }
@@ -68,6 +72,7 @@ public class Customer {
     public void drinkRefused() {
         // todo angry speak
         this.refuseCount++;
+        speak();
         this.alcoholLevel -= 10;
         if (this.alcoholLevel < 0) {
             this.alcoholLevel = 0;
@@ -80,8 +85,17 @@ public class Customer {
         return this.alcoholLevel <= this.sweatSpotMax && this.alcoholLevel >= this.sweatSpotMin;
     }
 
+    public boolean isTipsy() {
+        return this.alcoholLevel > 15;
+    }
+
+    public boolean isDrunk() {
+        return this.alcoholLevel > this.alcoholTolerance;
+    }
+
     public boolean isAngry() {
-        return this.alcoholLevel > this.sweatSpotMax || this.refuseCount > 3;
+
+        return this.refuseCount > 0;
     }
 
     public boolean isPassedOut() {
