@@ -23,9 +23,9 @@ public class Display {
      */
     public void displayScript(BartenderScript script, int index) {
         try{
-            System.out.println("\n" + "Bartender: " + script.getScripts().get(index) + "\n");
+            displayMessage("\n" + "Bartender: " + script.getScripts().get(index) + "\n");
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Script not found");
+            displayMessage("Script not found");
         }
     }
 
@@ -37,9 +37,9 @@ public class Display {
      */
     public void displayScript(CustomerScript script, int index) {
         try{
-            System.out.println("\n" + "Customer: " + script.getSentences().get(index) + "\n");
+            displayMessage("\n" + "Customer: " + script.getSentences().get(index) + "\n");
         } catch (Exception e) {
-            System.out.println("Script not found");
+            displayMessage("Script not found");
         }
     }
 
@@ -49,7 +49,7 @@ public class Display {
      * @param drink The {@link Drink} object containing the drink details to be displayed.
      */
     public void displayDrink(Drink drink) {
-        System.out.println(drink.getDrinkType().getType() + ": " + drink.getBrand());
+        displayMessage(drink.getDrinkType().getType() + ": " + drink.getBrand());
     }
 
     /**
@@ -73,10 +73,14 @@ public class Display {
                     .append("/unit\n");
         }
 
-        System.out.println("\nStock: ");
+        displayMessage("\nStock: ");
         for (StringBuilder stringBuilder : drinkTypeMap.values()) {
-            System.out.print(stringBuilder.toString());
+            displayMessage(stringBuilder.toString());
         }
+    }
+
+    public void displayProfit(int profit) {
+        displayMessage("Your profit is " + profit + "Ft");
     }
 
     /**
@@ -86,9 +90,9 @@ public class Display {
      * @param actions An array of strings representing the bartender's actions.
      */
     public void displayBartenderActions(String bartenderName, String[] actions) {
-        System.out.println("\n" + bartenderName + "'s actions: ");
+        displayMessage("\n" + bartenderName + "'s actions: ");
         for (int i = 1; i <= actions.length; i++) {
-            System.out.println(i + ": " + actions[i - 1]);
+            displayMessage(i + ": " + actions[i - 1]);
         }
     }
 
@@ -98,9 +102,9 @@ public class Display {
      * @param drinkNames An array of strings representing the available drinks
      */
     public void displayDrinkName(String[] drinkNames) {
-        System.out.println("\n" + "Drinks: ");
+        displayMessage("\n" + "Drinks: ");
         for (int i = 1; i <= drinkNames.length; i++) {
-            System.out.println(i + ": " + drinkNames[i - 1]);
+            displayMessage(i + ": " + drinkNames[i - 1]);
         }
     }
 
@@ -111,13 +115,13 @@ public class Display {
      * @param customerNames     An optional array of customer names. If null, names are not displayed.
      */
     public void displayRemainingCustomers(int numberOfCustomers, String[] customerNames) {
-        System.out.println("\nThere are " + numberOfCustomers + " customers in the pub\n");
+        displayMessage("\nThere are " + numberOfCustomers + " customers in the pub\n");
         if (customerNames == null) {
             return;
         }
-        System.out.println("Customers in line: ");
+        displayMessage("Customers in line: ");
         for (int i = 1; i <= customerNames.length; i++) {
-            System.out.println(i + ": " + customerNames[i - 1]);
+            displayMessage(i + ": " + customerNames[i - 1]);
         }
     }
 

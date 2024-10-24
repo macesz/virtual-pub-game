@@ -20,8 +20,13 @@ public class Input {
      *
      * @return A String representing the user's input from the console.
      */
-    private String getInput(){
-        return scanner.nextLine();
+    private String getInput() {
+        String input = scanner.nextLine();
+        if (input.equalsIgnoreCase("q")) {
+            display.displayMessage("Quitting the game. Goodbye!");
+            System.exit(0);  // Exit the program
+        }
+        return input;
     }
 
     /**
