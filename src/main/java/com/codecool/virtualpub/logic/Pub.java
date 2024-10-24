@@ -91,6 +91,9 @@ public class Pub {
             case Action.CHECK_CUSTOMERS:
                 checkCustomers();
                 break;
+            case Action.CHECK_PROFIT:
+                checkProfit();
+                break;
         }
     }
 
@@ -124,6 +127,10 @@ public class Pub {
 
     private void checkStock() {
         display.displayStock(stock);
+    }
+
+    private void checkProfit() {
+        display.displayProfit(getProfit());
     }
 
     private void refuse(Customer customer) {
