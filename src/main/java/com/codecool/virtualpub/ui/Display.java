@@ -99,7 +99,7 @@ public class Display {
         try{
             for (int i = 1; i <= actions.length; i++) {
                 displayMessage("\n" + i + ": " + actions[i - 1]);
-                Thread.sleep(700);
+                Thread.sleep(500);
             }
         }catch (InterruptedException e){
             displayMessage("interrupted sleep");
@@ -130,15 +130,15 @@ public class Display {
      * @param customerNames     An optional array of customer names. If null, names are not displayed.
      */
     public void displayRemainingCustomers(int numberOfCustomers, String[] customerNames) {
+        displayMessage("\nThere are " + numberOfCustomers + " customers in the pub\n");
         if (customerNames == null) {
             return;
         }
-        try{
-            Thread.sleep(800);
-            displayMessage("\nThere are " + numberOfCustomers + " customers in the pub\n");
-        }catch(InterruptedException e){
-            displayMessage("interrupted sleep");
-        }
+//        try{
+//            Thread.sleep(400);
+//        }catch(Exception e){
+//            displayMessage("interrupted sleep");
+//        }
         displayMessage("Customers in line: ");
         for (int i = 1; i <= customerNames.length; i++) {
             displayMessage("\n" + i + ": " + customerNames[i - 1]);
