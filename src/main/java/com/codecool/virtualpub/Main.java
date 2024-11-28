@@ -8,3 +8,5 @@ public class Main {
         game.run();
     }
 }
+
+// put display and input here and add as parameter to game

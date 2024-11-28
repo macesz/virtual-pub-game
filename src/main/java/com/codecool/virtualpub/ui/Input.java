@@ -1,9 +1,7 @@
 package com.codecool.virtualpub.ui;
 
-import com.codecool.virtualpub.data.Action;
 import com.codecool.virtualpub.data.Bartender;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Input {
@@ -35,10 +33,10 @@ public class Input {
      * If the input is invalid, an error message is displayed and the user is prompted again.
      *
      * @param bartender The Bartender object representing the current bartender interaction.
-     * @param actions A String array containing the available actions the user can choose from.
+     * @param actions   A String array containing the available actions the user can choose from.
      * @return An integer representing the user's selected action from the list.
      */
-    private int getChoice(Bartender bartender, String[] actions){
+    private int getChoice(Bartender bartender, String[] actions) { // use this for all as a more
         while (true) {
             try {
                 display.displayMessage("\n\nEnter choice:  \n");
@@ -59,11 +57,11 @@ public class Input {
      * The method handles user input and returns a valid action choice.
      *
      * @param bartender The Bartender object representing the current interaction with the bartender.
-     * @param actions A String array of actions that the user can select from.
+     * @param actions   A String array of actions that the user can select from.
      * @return An integer representing the index of the user's selected action from the list.
      */
-    public int getActionChoice(Bartender bartender, String[] actions){
-        display.displayBartenderActions(bartender.getName(), actions );
+    public int getActionChoice(Bartender bartender, String[] actions) {
+        display.displayBartenderActions(bartender.getName(), actions);
         display.displayMessage("\n\nChoose an action: \n");
         return getChoice(bartender, actions);
     }
@@ -74,10 +72,10 @@ public class Input {
      * The method handles user input and returns a valid drink choice.
      *
      * @param bartender The Bartender object representing the current interaction with the bartender.
-     * @param drinks A String array of available drink options that the user can select from.
+     * @param drinks    A String array of available drink options that the user can select from.
      * @return An integer representing the index of the user's selected drink from the list.
      */
-    public int getDrinkChoice(Bartender bartender, String[] drinks){
+    public int getDrinkChoice(Bartender bartender, String[] drinks) {
         display.displayDrinkName(drinks);
         display.displayMessage("\n\nChoose a drink: \n");
         return getChoice(bartender, drinks);
@@ -88,7 +86,7 @@ public class Input {
      *
      * @return A String representing the user's inputted name.
      */
-    public String getName(){
+    public String getName() {
         display.displayMessage("\n\nEnter your name: ");
         return getInput();
     }
@@ -102,8 +100,8 @@ public class Input {
      * @throws NumberFormatException if the input is not a valid integer
      */
     public int getDrinkAmount(int max) {
-        while(true){
-            try{
+        while (true) {
+            try {
                 display.displayMessage("\n\nEnter drink amount: \n");
                 int amount = Integer.parseInt(getInput());
                 if (amount > max || amount < 1) {
@@ -124,8 +122,8 @@ public class Input {
      * @throws NumberFormatException if the input is not a valid integer
      */
     public int getNumberOfCustomers() {
-        while(true){
-            try{
+        while (true) {
+            try {
                 display.displayMessage("\n\nEnter number of Customers: ");
                 return Integer.parseInt(getInput());
             } catch (NumberFormatException e) {
